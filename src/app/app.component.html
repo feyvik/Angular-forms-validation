@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-12">
+    <!-- <h3 *ngIf="message">{{ message }}</h3> -->
+    <form [formGroup]="addForm" (ngSubmit)="submitAddForm()">
+      <div class="row">
+        <div class="col-12 mb-2">
+          <div class="row">
+            <label class="col-2">FullName</label>
+            <input
+              type="text"
+              class="col-6"
+              formControlName="FullName"
+              placeholder=""
+              name="FullName"
+              autocomplete="off"
+              [ngClass]="{ 'is-invalid': submitted &amp;&amp; addForm.controls.FullName.errors }"
+            />
+            <div
+              *ngIf="submitted &amp;&amp; addForm.controls.FullName.errors"
+              class="text-danger"
+            >
+              <div *ngIf="addForm.controls.FullName.errors.required">
+                FullName is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          <div class="row">
+            <label class="col-2">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="col-6"
+              formControlName="email"
+              placeholder=""
+              name="email"
+              autocomplete="off"
+              [ngClass]="{ 'is-invalid': submitted &amp;&amp;
+              addForm.controls.email.errors }"
+            />
+            <div
+              *ngIf="submitted &amp;&amp; addForm.controls.email.errors"
+              class="text-danger"
+            >
+              <div *ngIf="addForm.controls.email.errors.required">
+                Email is required
+              </div>
+              <div *ngIf="addForm.controls.email.errors.email">
+                Email must be a valid email address
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          <div class="row">
+            <label class="col-2">Phone No</label>
+            <input
+              type="text"
+              class="col-6"
+              formControlName="phone"
+              placeholder=""
+              name="phone"
+              autocomplete="off"
+              [ngClass]="{ 'is-invalid': submitted &amp;&amp; addForm.controls.phone.errors }"
+            />
+            <div
+              *ngIf="submitted &amp;&amp; addForm.controls.phone.errors"
+              class="text-danger"
+            >
+              <div *ngIf="addForm.controls.phone.errors.required">
+                phone is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          <div class="row">
+            <label class="col-2">password</label>
+            <input
+              type="password"
+              class="col-6"
+              formControlName="password"
+              placeholder=""
+              name="password"
+              autocomplete="off"
+              [ngClass]="{ 'is-invalid': submitted &amp;&amp; addForm.controls.password.errors }"
+            />
+            <div
+              *ngIf="submitted &amp;&amp; addForm.controls.password.errors"
+              class="text-danger"
+            >
+              <div *ngIf="addForm.controls.password.errors.required">
+                Password is required
+              </div>
+              <div *ngIf="addForm.controls.password.errors.minlength">
+                Password must be at least 6 characters
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center box">
+        <button>
+          <span *ngIf="!loading">Add</span>
+          <div *ngIf="loading" class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
